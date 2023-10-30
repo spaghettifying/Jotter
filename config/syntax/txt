@@ -1,0 +1,7 @@
+filetype=.c
+filematch=.txt
+keywords=TODO=TODO:
+slcomment=>
+mlcommentstart=>>
+mlcommentend=<<
+flags=numbers=strings

@@ -1,0 +1,3 @@
+/home/adam/CLionProjects/Jotter/cmake-build-debug/CMakeFiles/TextEditor.dir
+/home/adam/CLionProjects/Jotter/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/adam/CLionProjects/Jotter/cmake-build-debug/CMakeFiles/rebuild_cache.dir
