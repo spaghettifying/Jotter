@@ -108,7 +108,7 @@ char *TXT_HL_keywords[] = {
 struct editorSyntax HLDB[] = {
         { // contains syntax config for c lang
             ".c",
-            C_HL_extensions,
+            NULL,
             C_HL_keywords,
             "//",
             "/*", "*/",
@@ -600,6 +600,29 @@ void *editorRowsToString(int *buflen) {
     }
 
     return buf;
+}
+
+char splitStringBySingleCharSaveArray(char line[]) {
+
+}
+
+void loadSyntaxFromFiles() {
+    FILE *fptr;
+    fptr = fopen("config/syntax/c", "r");
+    if (fptr == NULL) return;
+
+    int filematchLineNum = 1;
+
+    char line[256];
+    int count = 0;
+    while (fgets(line, sizeof(line), fptr) != NULL) {
+        if (count == filematchLineNum) {
+            //split by =
+            splitStringBySingleCharSaveArray(line);
+        } else {
+            count++;
+        }
+    }
 }
 
 //FILE* editorCreateFile() {
