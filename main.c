@@ -23,6 +23,9 @@
 #define JOTTER_TAB_STOP 4
 #define JOTTER_QUIT_TIMES 3
 
+#define MAX_KEYWORDS 50  // Maximum number of keywords, change as needed
+#define MAX_LINE_LENGTH 1000  // Maximum line length, adjust as necessary
+
 #define CTRL_KEY(k) ((k) & 0x1f)
 
 enum editorKey {
@@ -96,6 +99,7 @@ struct editorConfig E;
 /*** filetypes ***/
 
 char *C_HL_extensions[] = { ".c", ".h", ".cpp", NULL };
+//char *C_HL_extensions[MAX_KEYWORDS];
 char *C_HL_keywords[] = { // put these in a file at some point
         "switch", "if", "while", "for", "break", "continue", "return", "else", "struct", "union", "typedef", "static", "enum", "class", "case", "int|", "long|", "double|", "float|", "char|", "unsigned|", "signed|", "void|", NULL
 };
@@ -108,7 +112,7 @@ char *TXT_HL_keywords[] = {
 struct editorSyntax HLDB[] = {
         { // contains syntax config for c lang
             ".c",
-            NULL,
+            C_HL_extensions,
             C_HL_keywords,
             "//",
             "/*", "*/",
@@ -602,28 +606,15 @@ void *editorRowsToString(int *buflen) {
     return buf;
 }
 
-char splitStringBySingleCharSaveArray(char line[]) {
-
-}
-
-void loadSyntaxFromFiles() {
-    FILE *fptr;
-    fptr = fopen("config/syntax/c", "r");
-    if (fptr == NULL) return;
-
-    int filematchLineNum = 1;
-
-    char line[256];
-    int count = 0;
-    while (fgets(line, sizeof(line), fptr) != NULL) {
-        if (count == filematchLineNum) {
-            //split by =
-            splitStringBySingleCharSaveArray(line);
-        } else {
-            count++;
-        }
-    }
-}
+// Function to split the line into an array of pointers
+//int splitLineIntoKeywords(char *line, char **keywords) {
+//
+//}
+//
+//
+//void loadSyntaxFromFiles() {
+//
+//}
 
 //FILE* editorCreateFile() {
 //
