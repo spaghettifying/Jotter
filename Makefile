@@ -1,2 +1,2 @@
-jotter: main.c
-	$(CC) main.c -o jotter -Wall -Wextra -pedantic -std=c11
+jotter: src/main.c
+	$(CC) src/main.c -o jotter -Wall -Wextra -pedantic -std=c11
